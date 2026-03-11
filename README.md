@@ -75,7 +75,10 @@ Acessibilidade Visual:
             Esta fonte foi escolhida pela sua boa legibilidade e minimalismo, possui um espaçamento uniforme entre cada letra e foi criada utilizando formas geométricas perfeitas, isto promove acessibilidade para pessoas com deficiências visuais, por exemplo, Dislexia.
     
 
-    Possível DARK MODE
+    Dark Mode
+        Utilizado um background escuro com letras claras para melhor acessibilidade (contraste) e/ou preferência do usuário. 
+    
+    
     Ver se funfa com HIGH contrast
 
     Label nos forms - utilizamos o placeholder
