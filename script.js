@@ -23,7 +23,8 @@ document.addEventListener('DOMContentLoaded', () => {
     /* =========================================
        2. STATE VARIABLES
        ========================================= */
-    let indiceAtual = 0
+    let indiceAtual = 1
+    let isTransitioning = false
 
     /* =========================================
        3. FUNCTIONS
@@ -67,19 +68,41 @@ document.addEventListener('DOMContentLoaded', () => {
 
     // --- Carousel ---
     function initCarousel() {
+        // Clone Last Image (Prepended)
+        const cloneLast = document.createElement("div")
+        cloneLast.classList.add("carousel-slide")
+        cloneLast.style.backgroundImage = `url('${imagens[imagens.length - 1]}')`
+        cloneLast.id = 'last-clone'
+        track.appendChild(cloneLast)
+
+        // Real Images
         imagens.forEach((img) => {
             const slide = document.createElement("div")
             slide.classList.add("carousel-slide")
             slide.style.backgroundImage = `url('${img}')`
             track.appendChild(slide)
         })
+
+        // Clone First Image (Appended)
+        const cloneFirst = document.createElement("div")
+        cloneFirst.classList.add("carousel-slide")
+        cloneFirst.style.backgroundImage = `url('${imagens[0]}')`
+        cloneFirst.id = 'first-clone'
+        track.appendChild(cloneFirst)
+
+        // Initial Position
+        track.style.transform = `translateX(-${indiceAtual * 100}%)`
     }
 
     function mudarImagem(direcao) {
+        if (isTransitioning) return
+        track.style.transition = 'transform 0.5s ease-in-out'
+        isTransitioning = true
+
         if (direcao === 'next') {
-            indiceAtual = (indiceAtual + 1) % imagens.length
+            indiceAtual++
         } else {
-            indiceAtual = (indiceAtual - 1 + imagens.length) % imagens.length
+            indiceAtual--
         }
         track.style.transform = `translateX(-${indiceAtual * 100}%)`
     }
@@ -147,6 +170,22 @@ document.addEventListener('DOMContentLoaded', () => {
     window.addEventListener("scroll", scrollPos)
     toTopbtn.addEventListener("click", voltarAoTopo)
     themeToggleBtn.addEventListener('click', toggleTheme)
+
+    track.addEventListener('transitionend', () => {
+        isTransitioning = false
+        const slides = document.querySelectorAll('.carousel-slide')
+        
+        if (slides[indiceAtual].id === 'last-clone') {
+            track.style.transition = 'none'
+            indiceAtual = slides.length - 2
+            track.style.transform = `translateX(-${indiceAtual * 100}%)`
+        }
+        if (slides[indiceAtual].id === 'first-clone') {
+            track.style.transition = 'none'
+            indiceAtual = 1
+            track.style.transform = `translateX(-${indiceAtual * 100}%)`
+        }
+    })
     
     window.matchMedia('(prefers-color-scheme: dark)').addEventListener('change', e => {
         if (!localStorage.getItem('theme')) { 
