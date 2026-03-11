@@ -1,15 +1,40 @@
-//Constants
-const form = document.getElementById("form-newsletter")
-const nomeF = document.getElementById("nome")
-const telemovelF = document.getElementById("telemovel")
-const emailF = document.getElementById("email")
-const toTopbtn = document.getElementById("to-top")
-const mensagemFeedback = document.getElementById("mensagem-feedback")
-const imagens = ["media/hero.png", "media/evento1.png", "media/sobre_nos.png"]
-const forward = document.getElementById("forward")
-const prev = document.getElementById("prev")
 
 
+
+
+
+
+document.addEventListener('DOMContentLoaded', () => {
+   /*
+      DOM ELEMENTS & CONSTANTS
+   */
+    const form = document.getElementById("form-newsletter")
+    const nomeF = document.getElementById("nome")
+    const telemovelF = document.getElementById("telemovel")
+    const emailF = document.getElementById("email")
+    const mensagemFeedback = document.getElementById("mensagem-feedback")
+    
+    const toTopbtn = document.getElementById("to-top")
+    
+    const track = document.getElementById("carousel-track")
+    const btnNext = document.getElementById("forward")
+    const btnPrev = document.getElementById("prev")
+    const imagens = ["media/hero.png", "media/evento1.png", "media/sobre_nos.png"]
+    
+    const themeToggleBtn = document.getElementById('theme-toggle')
+    const htmlEl = document.documentElement
+    const sunIcon = '☀️'
+    const moonIcon = '🌙'
+
+    /* 
+     STATE VARIABLES
+     */
+    let indiceAtual = 0
+
+    /* 
+      FUNCTIONS
+     */
+    
 //Checks if each user input is correct, if not correct, makes the border of the incorrect input red
 function validadeForm(event) {
     event.preventDefault()
@@ -47,7 +72,27 @@ function validadeForm(event) {
     }
 }
 
-//Changes scroll to top button, as user scrolls down
+    // --- Carrosel ---
+    function initCarousel() {
+        imagens.forEach((img) => {
+            const slide = document.createElement("div")
+            slide.classList.add("carousel-slide")
+            slide.style.backgroundImage = `url('${img}')`
+            track.appendChild(slide)
+        })
+    }
+
+    function mudarImagem(direcao) {
+        if (direcao === 'next') {
+            indiceAtual = (indiceAtual + 1) % imagens.length
+        } else {
+            indiceAtual = (indiceAtual - 1 + imagens.length) % imagens.length
+        }
+        track.style.transform = `translateX(-${indiceAtual * 100}%)`
+    }
+
+    
+ //Changes scroll to top button, as user scrolls down
 function scrollPos(){
    const alturaTotal = document.documentElement.scrollHeight - window.innerHeight
    const percentagemScroll = (window.scrollY / alturaTotal) * 100
@@ -67,7 +112,8 @@ function scrollPos(){
          toTopbtn.style.display = "none"
       }
 }
-//Makes user go to top of the page
+ 
+ //Makes user go to top of the page
 function voltarAoTopo() {
     window.scrollTo({
         top: 0,
@@ -77,58 +123,25 @@ function voltarAoTopo() {
 
 
 
-let indiceAtual = 0
+    /* 
+     INITIALIZATION & EVENT LISTENERS
+     */
+    
+    // Initialize Logic
+    initCarousel()
+    initTheme()
 
-function mudarImagem(direcao) {
-    if (direcao === 'next') {
-        indiceAtual = (indiceAtual + 1) % imagens.length
-    } else {
-        indiceAtual = (indiceAtual - 1 + imagens.length) % imagens.length
-    }
-    hero.style.backgroundImage = `url('${imagens[indiceAtual]}')`
-}
-
-
-
-//Event Listeners
-forward.addEventListener("click", () => mudarImagem('next'))
-prev.addEventListener("click", () => mudarImagem('prev'))
-toTopbtn.addEventListener("click", voltarAoTopo)
-window.addEventListener("scroll", scrollPos)
-form.addEventListener("submit", validadeForm)
-
-
-document.addEventListener('DOMContentLoaded', () => {
-    const themeToggleBtn = document.getElementById('theme-toggle');
-    const htmlEl = document.documentElement;
-    const sunIcon = '☀️';
-    const moonIcon = '🌙';
-
-    // Function to set the theme
-    const setTheme = (theme) => {
-        htmlEl.setAttribute('data-theme', theme);
-        themeToggleBtn.textContent = theme === 'dark' ? sunIcon : moonIcon;
-        localStorage.setItem('theme', theme);
-    };
-
-    // Check for saved theme in localStorage or user's preference (Media Querie)
-    const savedTheme = localStorage.getItem('theme');
-    const prefersDark = window.matchMedia('(prefers-color-scheme: dark)').matches;
-    const currentTheme = savedTheme || (prefersDark ? 'dark' : 'light');
-
-    // Set initial theme
-    setTheme(currentTheme);
-
-    // Listener for the toggle button
-    themeToggleBtn.addEventListener('click', () => {
-        const newTheme = htmlEl.getAttribute('data-theme') === 'dark' ? 'light' : 'dark';
-        setTheme(newTheme);
-    });
-
-    // Listener for changes in OS theme preference
+    // Add Listeners
+    form.addEventListener("submit", validadeForm)
+    btnNext.addEventListener("click", () => mudarImagem('next'))
+    btnPrev.addEventListener("click", () => mudarImagem('prev'))
+    window.addEventListener("scroll", scrollPos)
+    toTopbtn.addEventListener("click", voltarAoTopo)
+    themeToggleBtn.addEventListener('click', toggleTheme)
+    
     window.matchMedia('(prefers-color-scheme: dark)').addEventListener('change', e => {
-        if (!localStorage.getItem('theme')) { // Only change if user hasn't set a preference
-            setTheme(e.matches ? 'dark' : 'light');
+        if (!localStorage.getItem('theme')) { 
+            setTheme(e.matches ? 'dark' : 'light')
         }
-    });
-});
+    })
+})
