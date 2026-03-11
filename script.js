@@ -1,3 +1,4 @@
+//Constants
 const form = document.getElementById("form-newsletter")
 const nomeF = document.getElementById("nome")
 const telemovelF = document.getElementById("telemovel")
