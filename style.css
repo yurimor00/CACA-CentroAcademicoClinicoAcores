@@ -173,6 +173,7 @@ ul {
     height: 42px;
     font-size: 1.2rem;
     line-height: 1;
+    cursor: pointer;
 }
 
 /* --- Carrossel --- */
@@ -633,6 +634,7 @@ html[data-theme="dark"] .nav a:hover {
 html[data-theme="dark"] .theme-toggle-btn {
     border-color: var(--white);
     color: var(--white);
+    transition: ease 0.3s;
 }
  
 html[data-theme="dark"] .btn-primary {

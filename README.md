@@ -79,13 +79,23 @@ Acessibilidade Visual:
         Utilizado um background escuro com letras claras para melhor acessibilidade (contraste) e/ou preferência do usuário. 
     
     
+
+
+
+
+
+TO-DO:
+    - Slide up Serviços
+    - Carousel prox Eventos
+    - Background Data Eventos
+    - Imagens Parceiros Formatação
+    - Acessibilidade
+
     Ver se funfa com HIGH contrast
 
     Label nos forms - utilizamos o placeholder
 
     @rafa nos forms tens que colocar um atribito "aria-live="polite"" no data-container
-
-
 
     alt= nas images 
 
@@ -105,7 +115,7 @@ Acessibilidade Motora:
     Espaço entre clicáveis para bad aim
     Resizing correct
 
-Outras Acessibilidades (Preferancias):
+Outras Acessibilidades (Preferencias):
     light/dark mode
     media querries reduced motion
     
