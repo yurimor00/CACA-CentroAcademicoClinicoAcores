@@ -17,17 +17,17 @@ function criarGrafico(title, data, target){
     const altura = 300;
     const larguraBarra = 50;
     const espacoEntreBarras = 10;
-
+    //seleciona elemento do html e cria o elemento do svg
     const svg = d3.select(target)
         .append("svg")
         .attr("width", largura)
         .attr("height", altura + 25) 
         .style("background", "transparent");
-
+    //Cria retangulos dentro do svg criado antes
     svg.selectAll("rect")
-        .data(data)
+        .data(data)//conecta os dados ao d3
         .enter()
-        .append("rect")
+        .append("rect") 
         .attr("class", "bar")
         .attr("fill", 'var(--accent-color)')
         .attr("x", (d,i) => i * (larguraBarra + espacoEntreBarras))
@@ -40,12 +40,12 @@ function criarGrafico(title, data, target){
         .attr("y", d => altura - d.total) 
         .attr("height", d => d.total);
 
-    
+    //valor para cada barra
     svg.selectAll(".label-valor") 
         .data(data)
         .enter()
         .append("text")
-        .text(d => d.total) 
+        .text(d => d.total)
         .attr("x", (d,i) => i * (larguraBarra + espacoEntreBarras) + larguraBarra/2)
         .attr("y", d => altura - d.total - 5)
         .attr("text-anchor", "middle") 
@@ -55,7 +55,8 @@ function criarGrafico(title, data, target){
         .transition()
         .delay(1200) 
         .style("opacity", 1);
-
+        
+    //Legenda de cada barra
     svg.selectAll(".label-ano")
         .data(dados)
         .enter()
@@ -68,6 +69,7 @@ function criarGrafico(title, data, target){
         .style("font-size", "14px")
         .style("font-weight", "bold");
 
+    //Titulo do grafico
     svg.append("text")
     .attr("class", "h2")
     .attr("x", 205)               
