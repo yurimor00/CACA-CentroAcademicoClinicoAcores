@@ -7,11 +7,9 @@ const dados = [
         { ano: "2025", total: 54},
     ];
 
-
-
-
 //Grafico de barras com o D3
 function criarGrafico(title, data, target){
+    d3.select(target).selectAll("*").remove();
     //tamanhos da janela do svg
     const largura = 500;
     const altura = 300;
@@ -49,13 +47,13 @@ function criarGrafico(title, data, target){
         .attr("x", (d,i) => i * (larguraBarra + espacoEntreBarras) + larguraBarra/2)
         .attr("y", d => altura - d.total - 5)
         .attr("text-anchor", "middle") 
-        .attr("fill", "white")
+        .attr("fill", 'var(--text-color)')
         .style("font-size", "12px")
         .style("opacity", 0)
         .transition()
         .delay(1200) 
         .style("opacity", 1);
-        
+
     //Legenda de cada barra
     svg.selectAll(".label-ano")
         .data(dados)
@@ -81,10 +79,6 @@ function criarGrafico(title, data, target){
     .text(title);
 }
 
-const titulo1="Investigações Concluidas"
-const titulo2="Investigações com Parcerias"
-const div= '#grafico'
-criarGrafico(titulo1, dados, div);
 
 // Gráfico(Donut Chart) com o D3
 function criarDonutChart(title, data, target) {
@@ -203,6 +197,19 @@ function criarDonutChart(title, data, target) {
         .style("font-weight", "bold")
         .text(title);
 }
+//Funçao que vai executar as funçoes de criaçao dos graficos 
+function mostrarGrafico(entries) {
+    entries.forEach(entry => {
+        if (entry.isIntersecting) {
+            criarGrafico("Investigações Concluídas", dados, '#grafico')
+            criarDonutChart("Distribuição de Investigações", dados, '#grafico')
+        }
+    })
+}
+//Cria um objeto de observer que vai executar a função mostrarGrafico
+const observer = new IntersectionObserver(mostrarGrafico);
+//Seleciona o elemento do html que o observer vai ficar a espera que apareça na tela
+const elementoAlvo = document.querySelector('#grafico');
 
-const titulo3="Distribuição de Investigações"
-criarDonutChart(titulo3, dados, div);
+observer.observe(elementoAlvo)
+
