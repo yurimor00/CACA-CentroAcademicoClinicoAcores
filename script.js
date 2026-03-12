@@ -154,7 +154,7 @@ document.addEventListener('DOMContentLoaded', () => {
             toTopbtn.style.display = "block"
             toTopbtn.style.color = 'white'
 
-            if (percentagemScroll > 87){ //Changes the color of the button as soon as user goes near the footer that is a darker color
+            if (percentagemScroll > 90){ //Changes the color of the button as soon as user goes near the footer that is a darker color
              toTopbtn.style.backgroundColor = 'white'
              toTopbtn.style.color = 'black'
             }
