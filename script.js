@@ -130,6 +130,21 @@ document.addEventListener('DOMContentLoaded', () => {
         track.style.transform = `translateX(-${indiceAtual * 100}%)`
     } 
 
+    function handleCarouselTransition() {
+        isTransitioning = false
+        const slides = document.querySelectorAll('.carousel-slide')
+        
+        if (slides[indiceAtual].id === 'last-clone') {
+            track.style.transition = 'none'
+            indiceAtual = slides.length - 2
+            track.style.transform = `translateX(-${indiceAtual * 100}%)`
+        }
+        if (slides[indiceAtual].id === 'first-clone') {
+            track.style.transition = 'none'
+            indiceAtual = 1
+            track.style.transform = `translateX(-${indiceAtual * 100}%)`
+        }
+    }
     
  //Changes scroll to top button, as user scrolls down
     function scrollPos(){
@@ -240,30 +255,15 @@ document.addEventListener('DOMContentLoaded', () => {
     initEventCarousel()
 
     // Add Listeners
-    form.addEventListener("submit", validadeForm)
+    track.addEventListener('transitionend', handleCarouselTransition)
     btnNext.addEventListener("click", () => mudarImagem('next'))
     btnPrev.addEventListener("click", () => mudarImagem('prev'))
     window.addEventListener("scroll", scrollPos)
     toTopbtn.addEventListener("click", voltarAoTopo)
     themeToggleBtn.addEventListener('click', toggleTheme)
     headerBtn.addEventListener('click', toggleMenu);
+    form.addEventListener("submit", validadeForm)
 
-    track.addEventListener('transitionend', () => {
-        isTransitioning = false
-        const slides = document.querySelectorAll('.carousel-slide')
-        
-        if (slides[indiceAtual].id === 'last-clone') {
-            track.style.transition = 'none'
-            indiceAtual = slides.length - 2
-            track.style.transform = `translateX(-${indiceAtual * 100}%)`
-        }
-        if (slides[indiceAtual].id === 'first-clone') {
-            track.style.transition = 'none'
-            indiceAtual = 1
-            track.style.transform = `translateX(-${indiceAtual * 100}%)`
-        }
-    })
-    
     
     window.matchMedia('(prefers-color-scheme: dark)').addEventListener('change', e => {
         if (!localStorage.getItem('theme')) { 
