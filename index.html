@@ -66,6 +66,19 @@
             </div>
         </section>
 
+
+
+        <section id="dados" class="section">
+            <div class="container ">
+                <div class="section-header">
+                    <span class="subtitle">Investigações</span>
+                    <h2>As nossas Investigações</h3>
+                </div>
+                <div id="grafico">
+
+                </div>
+            </div>
+        </section>
         <section class="section partners-section">
             <div class="container">
                 <h3>Os nossos parceiros</h3>
@@ -87,17 +100,26 @@
                     <article class="card service-card">
                         <div class="card-icon">🎓</div>
                         <h3>Ensino</h3>
-                        <a href="#" class="btn-text">Saber mais &rarr;</a>
+                        <div class="service-card-details">
+                            <p>Promovemos a formação académica e profissional de excelência.</p>
+                            <a href="#" class="btn-text">Saber mais &rarr;</a>
+                        </div>
                     </article>
                     <article class="card service-card">
                         <div class="card-icon">🧬</div>
                         <h3>Investigação</h3>
-                        <a href="#" class="btn-text">Saber mais &rarr;</a>
+                        <div class="service-card-details">
+                            <p>Desenvolvemos ciência para melhorar os cuidados de saúde.</p>
+                            <a href="#" class="btn-text">Saber mais &rarr;</a>
+                        </div>
                     </article>
                     <article class="card service-card">
                         <div class="card-icon">🩺</div>
                         <h3>Prática Clínica</h3>
-                        <a href="#" class="btn-text">Saber mais &rarr;</a>
+                        <div class="service-card-details">
+                            <p>Prestamos cuidados de saúde diferenciados e inovadores.</p>
+                            <a href="#" class="btn-text">Saber mais &rarr;</a>
+                        </div>
                     </article>
                 </div>
             </div>
@@ -227,9 +249,9 @@
                     
                     <label for="email" class="sr-only">Email</label>
                     <input id="email" name="email" placeholder="exemplo@email.com" novalidate>
-                    
+                     <div id="mensagem-feedback" class='pop-up'></div>
                     <button type="submit" class="btn btn-submit">Submeter</button>
-                    <div id="mensagem-feedback" class='pop-up'></div>
+                   
                 </form>
             </div>
         </div>
@@ -240,5 +262,6 @@
     <button id="to-top" class='btn btn-primary' title="Para o Topo">Voltar ao Topo</button>
     
     <script src="script.js"></script>
+    <script src="graficos.js"></script>
 </body>
 </html>
