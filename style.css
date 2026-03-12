@@ -813,8 +813,12 @@ html[data-theme="dark"] .theme-toggle-btn {
 }
  html[data-theme="dark"] .contacts{
     background-color: var(--accent-color1);
-    
  }
+ html[data-theme="dark"] .nav-links ul li a.contacts {
+    background-color: var(--accent-color1); 
+}
+ 
+
 html[data-theme="dark"] .btn-primary  {
     background-color: var(--accent-color1);
 }
