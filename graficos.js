@@ -11,17 +11,19 @@ const dados = [
 function criarGrafico(title, data, target){
     d3.select(target).selectAll("*").remove();
     //tamanhos da janela do svg
-    const largura = 500;
+    const largura = 400;
     const altura = 300;
     const larguraBarra = 50;
     const espacoEntreBarras = 10;
     //seleciona elemento do html e cria o elemento do svg
+
     const svg = d3.select(target)
         .append("svg")
         .attr("width", largura)
         .attr("height", altura + 25) 
         .style("background", "transparent");
     //Cria retangulos dentro do svg criado antes
+
     svg.selectAll("rect")
         .data(data)//conecta os dados ao d3
         .enter()
@@ -70,7 +72,7 @@ function criarGrafico(title, data, target){
     //Titulo do grafico
     svg.append("text")
     .attr("class", "h2")
-    .attr("x", 205)               
+    .attr("x", 180)               
     .attr("y", 30)                        
     .attr("text-anchor", "middle")       
     .attr("fill", "var(--text-color)")                
@@ -82,6 +84,7 @@ function criarGrafico(title, data, target){
 
 // Gráfico(Donut Chart) com o D3
 function criarDonutChart(title, data, target) {
+    d3.select(target).selectAll("*").remove();
     const largura = 500;
     const altura = 350;
     const margem = 40;
@@ -209,7 +212,7 @@ function mostrarGrafico(entries) {
 //Cria um objeto de observer que vai executar a função mostrarGrafico
 const observer = new IntersectionObserver(mostrarGrafico);
 //Seleciona o elemento do html que o observer vai ficar a espera que apareça na tela
-const elementoAlvo = document.querySelector('#grafico');
+const elementoAlvo = document.querySelector('#graficos-holder');
 
 observer.observe(elementoAlvo)
 
