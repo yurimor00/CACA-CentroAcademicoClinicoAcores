@@ -438,10 +438,6 @@ ul {
     flex-direction: column;
 }
 
-.event-card:hover {
-    transform: translateY(-5px);
-}
-
 .card-image {
     position: relative;
     height: 200px;
@@ -648,7 +644,18 @@ ul {
     }
 
     .events-track .event-card {
-        flex: 0 0 100%; /* Full width cards on mobile */
+        flex: 0 0 100%;
+    }
+
+    .event-card {
+        max-width: 250px;
+    }
+
+    #grafico {
+    display:flex;
+    flex-direction: column;
+    align-items: wrap;
+    padding:10px
     }
 }
 
