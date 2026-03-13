@@ -77,59 +77,14 @@ Acessibilidade Visual:
 
     Dark Mode
         Utilizado um background escuro com letras claras para melhor acessibilidade (contraste) e/ou preferência do usuário. 
-    
-    
-
-
-
-
-
-TO-DO:
-    - Adicionar mais eventos ao carroussel
-    - Comentar detalhadamente o código
-    - Imagens Parceiros Formatação
-    - Acessibilidade
-
-    Ver se funfa com HIGH contrast
-
-    Label nos forms - utilizamos o placeholder
-
-    @rafa nos forms tens que colocar um atribito "aria-live="polite"" no data-container
-
-    alt= nas images 
-
-    HTML semântico (tags) body, nav, aside, headers, articles, buttons  
-    <h1>... são muito utilizados por screenreaders então h1 devera ser utilizado so 1x e posteriormente os restos de acordo
-    links com TAB
-    
-Acessibilidade do Teclado:
-    TAB indexs - deve ser deixado para o browser, apenas 0 ou -1 devem ser utilizados
-    Pode ser utilizado o style="overflow para scrolling"
-    Deixar o outline
-
-Acessibilidade de Áudio:
-    Captions em videos
-
+            
 Acessibilidade Motora:
-    Espaço entre clicáveis para bad aim
-    Resizing correct
+    Espaço entre clicáveis para utilizadores com dificuldades motoras
+    Resizing correto para os diferentes dispositivos.
 
 Outras Acessibilidades (Preferencias):
-    light/dark mode
-    media querries reduced motion
-    
-    dislexia
+    media queries (reduced motion)
+        Verifica se o utilizador tem reduced motion ativado e "desativa" as transições
 
-    FOCUS principal autofocus
-
-    funcionando nice para mobile webdev tools
-    Lighthouse tool
-    eslint-plugin-jsx-a11y
-
-
-    em/rem para respeitar tamanho de fonte do browser
-    Toggle para light/dark theme
-    color-scheme css property
-    
 
 
