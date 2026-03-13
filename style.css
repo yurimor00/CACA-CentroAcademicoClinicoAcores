@@ -698,7 +698,13 @@ ul {
     gap: 5px;
     padding: 10px;
 }
-
+.header-text{
+    display:flex;
+    flex-wrap: nowrap;
+    margin-left:30px;
+    font-size:20px;
+    color: var(--primary-color)
+}
 .header-menu span {
     display: block;
     width: 30px;
@@ -758,6 +764,7 @@ ul {
         overflow: visible; 
     }
 
+   
     .hero h1 {
         font-size: 2rem;
     }
@@ -765,7 +772,9 @@ ul {
     .about-flex {
         flex-direction: column;
     }
-
+    .header-text{
+    display:none
+    }
     .header-between {
         flex-direction: column;
         align-items: flex-start;
@@ -820,6 +829,10 @@ html[data-theme="dark"] .theme-toggle-btn {
  html[data-theme="dark"] .contacts{
     background-color: var(--accent-color1);
  }
+
+  html[data-theme="dark"] .header-text{
+    color: var(--white)
+  }
  html[data-theme="dark"] .nav-links ul li a.contacts {
     background-color: var(--accent-color1); 
 }
@@ -890,5 +903,11 @@ html[data-theme="dark"] .footer-bottom {
         animation-iteration-count: 1 !important;
         transition-duration: 0.01ms !important;
         scroll-behavior: auto !important;
+    }
+}
+
+@media (max-width: 1200px) {
+.header-text{
+    display:none
     }
 }
