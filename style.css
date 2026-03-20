@@ -663,7 +663,35 @@ ul {
     background: var(--grey);
     color: var(--white);
 }
+.telemovel-container{
+    display:flex;
+    margin-bottom:100%;
+    margin-bottom: 10px;
+    border-radius: 5px;
+    background: var(--grey);
+    color: var(--white);
+}
+#indicativo{
+    min-width: 130px;
+    padding: 12px; 
+    background: var(--grey); 
+    color: var(--white); 
+    border: none; 
+    border-right: 1px solid var(--bg-light); 
+    border-radius: 5px 0 0 5px; 
+    outline: none;
+}
 
+.footer-form #telemovel {
+    background: transparent;
+    padding:12px;
+    margin-bottom: 0;
+    border: none;
+    border-radius: 0 5px 5px 0;
+    flex-grow: 1;
+    outline: none;
+    
+}
 .footer-form input::placeholder {
     color: var(--bg-light);
 }

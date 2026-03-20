@@ -72,18 +72,33 @@ document.addEventListener('DOMContentLoaded', () => {
         mensagemFeedback.textContent = ''
 
         let error = false //Created an boolean to check if any error is detected
+
+        const regexpNome = /^[a-zA-ZÀ-ÿ\s]{2,}$/       
+        const regexpEmail = /^[^\s@]+@[^\s@]+\.[^\s@]+$/
+
+        const indicativo = document.getElementById("indicativo").value
+        const numeroInserido = telemovelF.value.trim()
+        const país = {
+            "+351": /^9[1236]\d{9}$/, // Portugal
+            "+44": /^7\d{9}$/, // Reino Unido
+            "+1": /^\d{10}$/, // EUA
+            "+55": /^\d{10,11}$/ // Brasil 
+        }
+        const regexpTelemovel = país[indicativo] 
         //If value inserted by user is blank, changes border to red and makes error var true
-        if (nomeF.value.trim() === '') {
+        if (!regexpNome.test(nomeF.value.trim())) {
             error = true
             nomeF.style.border = "2px solid red"
         }
         //If value inserted by user is not 9 in lenght, makes border red and error set to true
-        if (telemovelF.value.trim().length !== 9) {
-            error = true
-            telemovelF.style.border = "2px solid red"
+        if (regexpTelemovel !== undefined) {
+            if (!regexpTelemovel.test(numeroInserido) === false) {
+                error = true
+                telemovelF.style.border = "2px solid red"
+            }
         }
         //If value inserted by user doesnt contain an @ makes border red and sets error to true
-        if (!emailF.value.includes('@')) {
+        if (!regexpEmail.test(emailF.value.trim())) {
             error = true
             emailF.style.border = "2px solid red"
         }
