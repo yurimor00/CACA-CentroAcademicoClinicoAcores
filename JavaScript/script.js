@@ -3,28 +3,28 @@ document.addEventListener('DOMContentLoaded', () => {
     DOM ELEMENTS & CONSTANTS
     */
 
-    //Constantes do formulario
+    //Newsletter Constants
     const form = document.getElementById("form-newsletter")
     const nomeF = document.getElementById("nome")
     const telemovelF = document.getElementById("telemovel")
     const emailF = document.getElementById("email")
     const mensagemFeedback = document.getElementById("mensagem-feedback")
 
-    //Butao de voltar ao topo
+    //Back to Top Button
     const toTopbtn = document.getElementById("to-top")
     
-    //Constantes relacionadas com o carrosel
+    //Carousel Constants
     const track = document.getElementById("carousel-track")
     const btnNext = document.getElementById("forward")
     const btnPrev = document.getElementById("prev")
     const imagens = ["media/hero.png", "media/evento1.png", "media/sobre_nos.png"]
 
-    //Constantes do Botao do telemovel
+    //Hamburger Menu Constants
     const headerBtn = document.getElementById('header-menu')
     const menuLinks = document.getElementById('nav-links')
     const navItems = document.querySelectorAll('#nav-links a')
 
-    //Constantes logotipo
+    //Logo Constants
     const textElement = document.querySelector('.text p')
     const textContent = textElement.innerText
     const angle = 360 / textContent.length
@@ -35,13 +35,13 @@ document.addEventListener('DOMContentLoaded', () => {
         }
     ).join("")
 
-    //Constantes do dark mode
+    //Dark Mode Constants
     const themeToggleBtn = document.getElementById('theme-toggle')
     const htmlEl = document.documentElement
     const sunIcon = themeToggleBtn.getAttribute('icon-sun')
     const moonIcon = themeToggleBtn.getAttribute('icon-moon')
 
-    //Constantes do carrossel dos eventos
+    //Events Carousel Constants
     const eventTrack = document.querySelector('.events-track')
     const eventCards = document.querySelectorAll('.event-card')
     const eventPrevBtn = document.getElementById('event-prev')
